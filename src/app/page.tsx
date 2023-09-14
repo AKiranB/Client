@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -47,7 +47,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
+            Docs{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -64,7 +64,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
+            Learn{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -81,7 +81,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
+            Templates{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -98,7 +98,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
+            Deploy{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -108,6 +108,36 @@ export default function Home() {
           </p>
         </a>
       </div>
+      <nav className="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full">
+        <div className="mb-2 sm:mb-0">
+          <a
+            href="#"
+            className="text-2xl no-underline text-grey-darkest hover:text-blue-dark"
+          >
+            Home
+          </a>
+        </div>
+        <div>
+          <a
+            href="#"
+            className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
+          >
+            One
+          </a>
+          <a
+            href="#"
+            className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
+          >
+            Two
+          </a>
+          <a
+            href="#"
+            className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
+          >
+            Three
+          </a>
+        </div>
+      </nav>
     </main>
-  )
+  );
 }
