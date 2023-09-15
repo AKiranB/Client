@@ -5,14 +5,14 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div>
-        <h1 className="mb-4 mt-24 text-5xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-8xl">
+        <h1 className="mb-4 mt-24 text-6xl font-extrabold text-gray-900 dark:text-white md:text-6xl lg:text-8xl">
           <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
             Challenge Yourself
           </span>{" "}
           <br />
           Everyday
         </h1>
-        <div className="flex justify-start min-w-screen">
+        <div className="flex justify-start min-w-screen ml-2 mt-8">
           <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400 text-1xl">
             <li className="flex items-center space-x-3">
               <svg
@@ -24,7 +24,7 @@ export default function Home() {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
                   d="M1 5.917 5.724 10.5 15 1.5"
