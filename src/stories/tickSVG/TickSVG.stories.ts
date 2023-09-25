@@ -1,19 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Button from "../../app/components/Button";
+import TickSVG from "../../app/components/TickSVG";
 
 const meta = {
-  title: "Example/Button",
-  component: Button,
+  title: "Example/TickSVG",
+  component: TickSVG,
 
   tags: ["autodocs"],
-} satisfies Meta<typeof Button>
+} satisfies Meta<typeof TickSVG>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    text: "Click me",
-    onClick: () => console.log("Clicked!"),
   },
 };
