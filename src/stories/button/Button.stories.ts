@@ -6,7 +6,7 @@ const meta = {
   component: Button,
 
   tags: ["autodocs"],
-} satisfies Meta<typeof Button>
+} satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
