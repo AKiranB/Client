@@ -16,15 +16,15 @@ export default function Home() {
         <div className="flex justify-start min-w-screen">
           <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400 text-1xl ml-2">
             <li className="flex items-center space-x-3">
-              <TickSVG />
+              <TickSVG timeout={250} />
               <span>Schedule Workouts</span>
             </li>
             <li className="flex items-center space-x-3 text-bold">
-              <TickSVG />
+              <TickSVG timeout={500} />
               <span>Report Outcomes</span>
             </li>
             <li className="flex items-center space-x-3">
-              <TickSVG />
+              <TickSVG timeout={750} />
               <span>Track Progress</span>
             </li>
           </ul>
