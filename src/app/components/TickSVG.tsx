@@ -5,7 +5,7 @@ interface TickSVGProps {
     timeout?: number;
 }
 
-export default function TickSVG({ timeout = 250 }) {
+export default function TickSVG({ timeout = 250 }: TickSVGProps) {
     const [animationStart, setAnimationStart] = useState(false);
 
     useEffect(() => {
