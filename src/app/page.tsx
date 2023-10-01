@@ -1,7 +1,21 @@
 
 import TickSVG from "./components/TickSVG";
+import { getClient } from "@/lib/getClient";
+import { gql } from "@apollo/client";
 
-export default function Home() {
+const query = gql`query FindAllUsers {
+  findAllUsers {
+    _id
+    name
+    email
+    password
+  }
+}`;
+
+export default async function Home() {
+  const client = getClient()
+  const { data } = await client.query({ query })
+  console.log(data);
   const items = ["Home", "About", "Contact"];
   return (
     <main className="flex min-h-screen flex-col items-center">
