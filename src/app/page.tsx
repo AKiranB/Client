@@ -1,5 +1,5 @@
 
-import TickSVG from "./components/TickSVG";
+import TickSVG from "./components/tick-svg/TickSVG";
 import { getClient } from "@/lib/getClient";
 import { gql } from "@apollo/client";
 

@@ -9,6 +9,7 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "cypress:open": "cypress open",
     "generate": "graphql-codegen"
   },
   "dependencies": {
@@ -42,6 +43,7 @@
     "@types/graphql": "^14.5.0",
     "apollo": "^2.34.0",
     "autoprefixer": "^10.4.15",
+    "cypress": "^13.3.0",
     "eslint-plugin-storybook": "^0.6.13",
     "postcss": "^8.4.29",
     "storybook": "^7.4.1"

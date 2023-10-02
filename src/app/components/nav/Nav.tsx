@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import Avatar from "./Avatar";
-import Button from "./Button";
+import Avatar from "../avatar/Avatar";
+import Button from "../button/Button";
 
 interface NavProps {
   logo?: HTMLImageElement;

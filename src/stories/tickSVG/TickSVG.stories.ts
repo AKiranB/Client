@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import TickSVG from "../../app/components/TickSVG";
+import TickSVG from "../../app/components/tick-svg/TickSVG";
 
 const meta = {
   title: "Example/TickSVG",

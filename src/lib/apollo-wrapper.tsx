@@ -13,8 +13,6 @@ function makeClient() {
     const httpLink = new HttpLink({
         uri: GQLURI,
     });
-
-
     return new NextSSRApolloClient({
         cache: new NextSSRInMemoryCache(),
         link:
