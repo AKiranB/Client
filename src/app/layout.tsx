@@ -1,8 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
+import Nav from "./components/nav/Nav";
+import Footer from "./components/footer/Footer";
 import { ApolloWrapper } from "@/lib/apollo-wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
