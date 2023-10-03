@@ -1,0 +1,8 @@
+query FindAllUsers {
+  findAllUsers {
+    _id
+    name
+    email
+    password
+  }
+}

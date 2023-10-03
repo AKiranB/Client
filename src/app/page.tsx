@@ -1,20 +1,11 @@
 
 import TickSVG from "./components/tick-svg/TickSVG";
 import { getClient } from "@/lib/getClient";
-import { gql } from "@apollo/client";
-
-const query = gql`query FindAllUsers {
-  findAllUsers {
-    _id
-    name
-    email
-    password
-  }
-}`;
+import { FindAllUsersDocument } from "@/types/apollo";
 
 export default async function Home() {
   const client = getClient()
-  const { data } = await client.query({ query })
+  const { data } = await client.query({ query: FindAllUsersDocument })
   console.log(data);
   const items = ["Home", "About", "Contact"];
   return (
