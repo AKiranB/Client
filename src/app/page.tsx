@@ -1,14 +1,30 @@
-
+"use client"
 import TickSVG from "./components/tick-svg/TickSVG";
-import { getClient } from "@/lib/getClient";
-import { FindAllUsersDocument } from "@/types/apollo";
 import NavWrapper from "./components/nav/NavWrapper";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import Spinner from "./components/spinner/spinner";
 
 export default function Home() {
-  // const client = getClient()
-  // const { data } = await client.query({ query: FindAllUsersDocument })
-  // console.log(data);
-  // const items = ["Home", "About", "Contact"];
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
+
+  //initial login check before we implement JWT
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user') as string);
+    if (user) {
+      router.push('/dashboard');
+    }
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return <div className="flex min-h-screen flex-col items-center justify-center">
+      <div className="h-32">
+        <Spinner />
+      </div>
+    </div>;
+  }
   return (
     <>
       <NavWrapper />
