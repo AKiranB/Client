@@ -7,9 +7,11 @@ interface NavProps {
   logo?: HTMLImageElement;
   items: string[];
   loggedInUser?: boolean;
+  handleLogin?: any
+  loading?: boolean
 }
 
-export default function Nav({ items, loggedInUser = false }: NavProps) {
+export default function Nav({ items, loggedInUser = false, handleLogin }: NavProps) {
   return (
     <nav className="flex justify-between text-white  h-16 border-b border-gray-100">
       <div className="flex items-center pl-8">
@@ -58,7 +60,7 @@ export default function Nav({ items, loggedInUser = false }: NavProps) {
           <Button
             text="Log in as guest"
             className="h-12"
-            onClick={() => console.log("log in as guest")}
+            onClick={handleLogin}
           />
         </div>
       )}

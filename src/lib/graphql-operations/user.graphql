@@ -6,3 +6,15 @@ query FindAllUsers {
     password
   }
 }
+
+mutation Login($loginUserInput: LoginUserInput!) {
+  login(loginUserInput: $loginUserInput) {
+    authToken
+    user {
+      _id
+      name
+      email
+      password
+    }
+  }
+}

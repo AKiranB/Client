@@ -289,6 +289,19 @@ export const FindAllUsersDocument = gql`
   }
 }
     `;
+export const LoginDocument = gql`
+    mutation Login($loginUserInput: LoginUserInput!) {
+  login(loginUserInput: $loginUserInput) {
+    authToken
+    user {
+      _id
+      name
+      email
+      password
+    }
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -299,6 +312,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     FindAllUsers(variables?: FindAllUsersQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<FindAllUsersQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<FindAllUsersQuery>(FindAllUsersDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'FindAllUsers', 'query');
+    },
+    Login(variables: LoginMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<LoginMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<LoginMutation>(LoginDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Login', 'mutation');
     }
   };
 }
@@ -307,3 +323,10 @@ export type FindAllUsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type FindAllUsersQuery = { __typename?: 'Query', findAllUsers: Array<{ __typename?: 'User', _id: string, name: string, email: string, password: string }> };
+
+export type LoginMutationVariables = Exact<{
+  loginUserInput: LoginUserInput;
+}>;
+
+
+export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'LoginResponse', authToken: string, user: { __typename?: 'User', _id: string, name: string, email: string, password: string } } };

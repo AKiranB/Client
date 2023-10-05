@@ -11,7 +11,7 @@ import {
 function makeClient() {
     const GQLURI = process.env.GQLURI
     const httpLink = new HttpLink({
-        uri: GQLURI,
+        uri: 'http://localhost:80/graphql',
     });
     return new NextSSRApolloClient({
         cache: new NextSSRInMemoryCache(),
