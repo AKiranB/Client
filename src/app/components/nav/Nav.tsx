@@ -13,7 +13,7 @@ interface NavProps {
 
 export default function Nav({ items, loggedInUser = false, handleLogin }: NavProps) {
   return (
-    <nav className="flex justify-between text-white  h-16 border-b border-gray-100">
+    <nav className="flex justify-between text-white h-16 border-b border-gray-100">
       <div className="flex items-center pl-8">
         <a className="text-3xl font-bold font-heading" href="#">
           <Image width={48} height={32} src="/logo.svg" alt="logo" />
