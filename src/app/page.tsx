@@ -8,7 +8,6 @@ import Spinner from "./components/spinner/spinner";
 export default function Home() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-
   //initial login check before we implement JWT
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user') as string);
@@ -16,7 +15,7 @@ export default function Home() {
       router.push('/dashboard');
     }
     setIsLoading(false);
-  }, []);
+  }, [router]);
 
   if (isLoading) {
     return <div className="flex min-h-screen flex-col items-center justify-center">

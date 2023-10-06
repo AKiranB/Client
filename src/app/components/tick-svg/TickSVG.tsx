@@ -12,7 +12,7 @@ export default function TickSVG({ timeout = 250 }: TickSVGProps) {
         setTimeout(() => {
             setAnimationStart(true);
         }, timeout);
-    }, []);
+    }, [timeout]);
 
     return (
         <div
