@@ -6,11 +6,10 @@ import {
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
 
 export const { getClient } = registerApolloClient(() => {
-    const GQLURI = process.env.GQLURI
     return new NextSSRApolloClient({
         cache: new NextSSRInMemoryCache(),
         link: new HttpLink({
-            uri: GQLURI,
+            uri: process.env.NEXT_PUBLIC_GQLURI,
         }),
     });
 });
