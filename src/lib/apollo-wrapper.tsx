@@ -10,7 +10,7 @@ import {
 
 function makeClient() {
     const httpLink = new HttpLink({
-        uri: process.env.NEXT_PUBLIC_GQLURI
+        uri: "https://fitr-api.onrender.com/graphql"
     });
     return new NextSSRApolloClient({
         cache: new NextSSRInMemoryCache(),

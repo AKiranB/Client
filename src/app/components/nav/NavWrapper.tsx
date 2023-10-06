@@ -2,9 +2,11 @@
 import { LoginDocument, LoginMutation } from "@/types/graphql-request"
 import Nav from "./Nav"
 import { useMutation } from "@apollo/client"
+import { useRouter } from "next/navigation"
 
 
 const NavWrapper = () => {
+    const router = useRouter()
     const items = ["Home", "About", "Contact"];
     const [login, { loading }] = useMutation(LoginDocument, {
         variables: {
@@ -14,7 +16,9 @@ const NavWrapper = () => {
             }
         },
         onCompleted: (data: LoginMutation) => {
-            console.log(data);
+            const user = data.login.user
+            localStorage.setItem('user', JSON.stringify(user))
+            router.push('/dashboard')
         },
         onError: (error) => {
             console.log(error)
