@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/client"
 import { useRouter } from "next/navigation"
 
 
-const NavWrapper = () => {
+const NavWrapper = ({ loggedInUser = false }: { loggedInUser?: boolean }) => {
     const router = useRouter()
     const items = ["Home", "About", "Contact"];
     const [login, { loading }] = useMutation(LoginDocument, {
@@ -28,6 +28,6 @@ const NavWrapper = () => {
     const handleLogin = () => {
         login()
     }
-    return (<Nav items={items} handleLogin={handleLogin} loading={loading} />)
+    return (<Nav items={items} handleLogin={handleLogin} loading={loading} loggedInUser={loggedInUser} />)
 }
 export default NavWrapper
