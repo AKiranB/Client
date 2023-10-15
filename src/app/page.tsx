@@ -1,17 +1,20 @@
-"use client"
+"use client";
 import TickSVG from "../components/tick-svg/TickSVG";
 import NavWrapper from "../components/nav/NavWrapper";
 import Spinner from "../components/spinner/spinner";
 import { useRouteLoggedInUser } from "@/hooks/useRouteUser";
 
 export default function Home() {
-  const isLoading = useRouteLoggedInUser()
+  const isLoading = useRouteLoggedInUser();
+  console.log(isLoading);
   if (isLoading) {
-    return <div className="flex min-h-screen flex-col items-center justify-center">
-      <div className="h-32">
-        <Spinner />
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center">
+        <div className="h-32">
+          <Spinner />
+        </div>
       </div>
-    </div>;
+    );
   }
   return (
     <>
@@ -42,6 +45,7 @@ export default function Home() {
             </ul>
           </div>
         </div>
-      </main></>
+      </main>
+    </>
   );
 }

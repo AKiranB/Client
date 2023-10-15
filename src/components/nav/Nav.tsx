@@ -5,35 +5,44 @@ import Button from "../button/Button";
 
 interface NavProps {
   logo?: HTMLImageElement;
-  items: string[];
+  items?: string[];
   loggedInUser?: boolean;
-  handleLogin?: any
-  loading?: boolean
+  handleLogin?: any;
+  loading?: boolean;
 }
 
-export default function Nav({ items, loggedInUser = false, handleLogin }: NavProps) {
+export default function Nav({
+  items,
+  loggedInUser = false,
+  handleLogin,
+}: NavProps) {
   return (
-    <nav className="flex justify-between text-white h-16 border-b border-gray-100 items-center bg-gray-100">
-
+    <nav className="flex justify-between text-white h-16 border-b border-gray-100 items-center bg-gray-900">
       <div className="flex items-center pl-8">
-        <a className="text-3xl font-bold font-heading" href="#">
-          <Image width={48} height={32} src="/logo.svg" alt="logo" />
+        <a
+          className="text-3xl font-bold font-heading bg-white rounded-full"
+          href="#"
+        >
+          <Image
+            className="p-2"
+            width={48}
+            height={32}
+            src="/logo.svg"
+            alt="logo"
+          />
         </a>
       </div>
-
-
-      <ul className="hidden md:flex text-gray-400 font-semi-bold font-heading space-x-16 mx-auto pl-16">
-        {items.map((item) => {
+      <ul className="hidden md:flex text-gray-300 font-semi-bold font-heading space-x-16 mx-auto pl-16">
+        {items?.map((item) => {
           return (
             <li key={Math.random()}>
-              <a className="hover:text-gray-900" href="#">
+              <a className="hover:text-gray-100" href="#">
                 {item}
               </a>
             </li>
           );
         })}
       </ul>
-
 
       {loggedInUser ? (
         <div className="flex items-center pr-8">
