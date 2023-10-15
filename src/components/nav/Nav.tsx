@@ -13,7 +13,7 @@ interface NavProps {
 
 export default function Nav({ items, loggedInUser = false, handleLogin }: NavProps) {
   return (
-    <nav className="flex justify-between text-white h-16 border-b border-gray-100 items-center">
+    <nav className="flex justify-between text-white h-16 border-b border-gray-100 items-center bg-gray-100">
 
       <div className="flex items-center pl-8">
         <a className="text-3xl font-bold font-heading" href="#">
@@ -26,7 +26,7 @@ export default function Nav({ items, loggedInUser = false, handleLogin }: NavPro
         {items.map((item) => {
           return (
             <li key={Math.random()}>
-              <a className="hover:text-gray-900 font-bold" href="#">
+              <a className="hover:text-gray-900" href="#">
                 {item}
               </a>
             </li>

@@ -1,22 +1,11 @@
 "use client"
-import TickSVG from "./components/tick-svg/TickSVG";
-import NavWrapper from "./components/nav/NavWrapper";
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import Spinner from "./components/spinner/spinner";
+import TickSVG from "../components/tick-svg/TickSVG";
+import NavWrapper from "../components/nav/NavWrapper";
+import Spinner from "../components/spinner/spinner";
+import { useRouteLoggedInUser } from "@/hooks/useRouteUser";
 
 export default function Home() {
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
-  //initial login check before we implement JWT
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user') as string);
-    if (user) {
-      router.push('/dashboard');
-    }
-    setIsLoading(false);
-  }, [router]);
-
+  const isLoading = useRouteLoggedInUser()
   if (isLoading) {
     return <div className="flex min-h-screen flex-col items-center justify-center">
       <div className="h-32">
