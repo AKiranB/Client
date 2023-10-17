@@ -11,11 +11,16 @@ interface NavProps {
   loading?: boolean;
 }
 
-export default function Nav({
-  items,
-  loggedInUser = false,
-  handleLogin,
-}: NavProps) {
+interface items {
+  title: string;
+  route: string;
+}
+
+export default function Nav({ loggedInUser = false, handleLogin }: NavProps) {
+  const items: items[] = [
+    { title: "Schedule Workout", route: "schedule" },
+    { title: "Calendar", route: "calendar" },
+  ];
   return (
     <nav className="flex justify-between text-white h-16 border-b border-gray-100 items-center bg-gray-900">
       <div className="flex items-center pl-8">
@@ -32,17 +37,19 @@ export default function Nav({
           />
         </a>
       </div>
-      <ul className="hidden md:flex text-gray-300 font-semi-bold font-heading space-x-16 mx-auto pl-16">
-        {items?.map((item) => {
-          return (
-            <li key={Math.random()}>
-              <a className="hover:text-gray-100" href="#">
-                {item}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+      {loggedInUser && (
+        <ul className="hidden md:flex text-gray-300 font-semi-bold font-heading space-x-16 mx-auto pl-16">
+          {items?.map((item) => {
+            return (
+              <li key={Math.random()}>
+                <a className="hover:text-gray-100" href={`/${item.route}`}>
+                  {item.title}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      )}
 
       {loggedInUser ? (
         <div className="flex items-center pr-8">

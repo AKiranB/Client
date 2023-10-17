@@ -7,7 +7,7 @@ const useRouteLoggedInUser = () => {
   const router = useRouter();
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") as string);
-    console.log(user);
+    console.log(user); 
     if (user) {
       router.push("/dashboard");
     }
