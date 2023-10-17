@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Footer from "../../components/footer/Footer";
+import TickSVG from "../../components/tick-svg/TickSVG";
 
 const meta = {
-  title: "Example/Footer",
-  component: Footer,
+  title: "Example/TickSVG",
+  component: TickSVG,
+
   tags: ["autodocs"],
-} satisfies Meta<typeof Footer>;
+} satisfies Meta<typeof TickSVG>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
 export const Primary: Story = {
   args: {
-    text: "Click me",
-    onClick: () => console.log("Clicked!"),
   },
 };

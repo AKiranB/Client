@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Avatar from "../../components/avatar/Avatar";
+import TickSVG from "../../components/tick-svg/TickSVG";
 
 const meta = {
-  title: "Example/Avatar",
-  component: Avatar,
+  title: "TickedSVG",
+  component: TickSVG,
 
   tags: ["autodocs"],
-} satisfies Meta<typeof Avatar>;
+} satisfies Meta<typeof TickSVG>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

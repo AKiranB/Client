@@ -1,0 +1,20 @@
+query FindAllUsers {
+  findAllUsers {
+    _id
+    name
+    email
+    password
+  }
+}
+
+mutation Login($loginUserInput: LoginUserInput!) {
+  login(loginUserInput: $loginUserInput) {
+    authToken
+    user {
+      _id
+      name
+      email
+      password
+    }
+  }
+}
