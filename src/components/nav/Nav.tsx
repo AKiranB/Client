@@ -7,8 +7,9 @@ interface NavProps {
   logo?: HTMLImageElement;
   items?: string[];
   loggedInUser?: boolean;
-  handleLogin?: any;
+  handleLogin: () => void;
   loading?: boolean;
+  handleLogout: () => void;
 }
 
 interface items {
@@ -16,7 +17,11 @@ interface items {
   route: string;
 }
 
-export default function Nav({ loggedInUser = false, handleLogin }: NavProps) {
+export default function Nav({
+  loggedInUser = false,
+  handleLogin,
+  handleLogout,
+}: NavProps) {
   const items: items[] = [
     { title: "Schedule Workout", route: "schedule" },
     { title: "Calendar", route: "calendar" },
@@ -72,14 +77,7 @@ export default function Nav({ loggedInUser = false, handleLogin }: NavProps) {
           <div className="mr-8 py-2 flex-shrink-0 ">
             <Avatar />
           </div>
-          <Button
-            text="Log out"
-            className="h-12 w-32"
-            onClick={() => {
-              localStorage.removeItem("user");
-              window.location.reload();
-            }}
-          />
+          <Button text="Log out" className="h-12 w-32" onClick={handleLogout} />
         </div>
       ) : (
         <div className="flex items-center pr-8">

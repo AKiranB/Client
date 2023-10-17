@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { User } from "../types/graphql-request";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 type IApplicationState = {
   user: User | null;
