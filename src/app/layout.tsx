@@ -1,10 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Nav from "./components/nav/Nav";
-import Footer from "./components/footer/Footer";
+import Footer from "../components/footer/Footer";
 import { ApolloWrapper } from "@/lib/apollo-wrapper";
-import NavWrapper from "./components/nav/NavWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,13 +16,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ApolloWrapper>
-          {children}
-        </ApolloWrapper>
+        <ApolloWrapper>{children}</ApolloWrapper>
         <Footer />
       </body>
     </html>
