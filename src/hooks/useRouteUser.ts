@@ -3,11 +3,11 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const useRouteLoggedInUser = () => {
+  //add global loading state
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") as string);
-    console.log(user); 
     if (user) {
       router.push("/dashboard");
     }

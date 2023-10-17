@@ -1,9 +1,18 @@
 import { useMutation } from "@apollo/client";
-import router from "next/router";
-import { LoginDocument, LoginMutation } from "../types/graphql-request";
+import { LoginDocument, LoginMutation, User } from "../types/graphql-request";
+import { useRouter } from "next/navigation";
+import { useStore } from "../store";
 
 export default function useLoginUser() {
-  //create a service layerfor this
+  const addUserToState = useStore((state) => state.setUser);
+  const onUserLoginSuccess = (user: User) => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+      router.push("/dashboard");
+      addUserToState(user);
+    }
+  };
+  const router = useRouter();
   const [login, { loading }] = useMutation(LoginDocument, {
     variables: {
       loginUserInput: {
@@ -12,12 +21,11 @@ export default function useLoginUser() {
       },
     },
     onCompleted: (data: LoginMutation) => {
-      const user = data.login.user;
-      localStorage.setItem("user", JSON.stringify(user));
-      router.push("/dashboard");
+      onUserLoginSuccess(data.login.user);
     },
     onError: (error) => {
       console.log(error);
     },
   });
+  return { login, loading };
 }
