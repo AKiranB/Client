@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const useRouteLoggedInUser = () => {
+  //add global loading state
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   useEffect(() => {
