@@ -1,16 +1,11 @@
-function getDaysInMonthUTC(month: number | undefined, year: number) {
-  const date = new Date(Date.UTC(year, month, 1));
-  let days = 0;
-  while (date.getUTCMonth() === month) {
-    days += 1;
-    date.setUTCDate(date.getUTCDate() + 1);
-  }
-  return days;
+function getDaysInMonthUTC(month: number, year: number) {
+  const days = new Date(year, month, 0).getUTCDate();
+  return days + 1;
 }
 function createCalendarDays(
   currentMonth: number,
   currentYear: number,
-  daysInMonthFn: (month: number | undefined, year: number) => number
+  daysInMonthFn: (month: number, year: number) => number
 ) {
   const resArray = [];
   const daysInMonth = daysInMonthFn(currentMonth, currentYear);

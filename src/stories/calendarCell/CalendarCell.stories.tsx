@@ -13,7 +13,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    date: new Date(),
+    dayOfTheWeek: "Sun",
+    dayOfTheMonth: "1",
     workouts: [],
   },
 };

@@ -1,11 +1,18 @@
-import CalendarCell from "./CalendarCell";
+import CalendarCell, { CalendarCellProps } from "./CalendarCell";
 
 interface CalendarGridProps {
-  calendarDays: any[];
+  calendarDays: CalendarCellProps[];
 }
 
 export default function CalendarGrid({ calendarDays }: CalendarGridProps) {
   return calendarDays.map((day) => {
-    null;
+    return (
+      <CalendarCell
+        workouts={day.workouts}
+        key={day.dayOfTheMonth.toString()}
+        dayOfTheMonth={day.dayOfTheMonth}
+        dayOfTheWeek={day.dayOfTheWeek}
+      />
+    );
   });
 }
