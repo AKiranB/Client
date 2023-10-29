@@ -1,4 +1,7 @@
-import { createCalendarDays, getDaysInMonthUTC } from "../utils/calendar";
+import {
+  createCalendarDays,
+  getDaysInMonthUTC,
+} from "../utils/calendar/calendar";
 
 export default function useCreateCalendarDays(userId?: string) {
   const month = [
