@@ -40,13 +40,11 @@ describe("Day Helper Functions", () => {
     it("should correctly create the day names and dates", () => {
       const daysArray = createCalendarDays(3, 2021, getDaysInMonthUTC);
 
-      // March 1st, 2021 is a Monday
       expect(daysArray[0]).toEqual({
         dayOfTheWeek: "Mon",
         dayOfTheMonth: "01",
       });
 
-      // March 31st, 2021 is a Wednesday
       const lastDayIndex = daysArray.length - 1;
       expect(daysArray[lastDayIndex]).toEqual({
         dayOfTheWeek: "Wed",
