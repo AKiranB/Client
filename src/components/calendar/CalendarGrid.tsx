@@ -5,14 +5,18 @@ interface CalendarGridProps {
 }
 
 export default function CalendarGrid({ calendarDays }: CalendarGridProps) {
-  return calendarDays.map((day) => {
-    return (
-      <CalendarCell
-        workouts={day.workouts}
-        key={day.dayOfTheMonth.toString()}
-        dayOfTheMonth={day.dayOfTheMonth}
-        dayOfTheWeek={day.dayOfTheWeek}
-      />
-    );
-  });
+  return (
+    <div className="grid xl:grid-cols-8 sm:grid-cols-4 xs:grid-cols-4 grid-rows-2 gap-4 min-w-[640px]">
+      {calendarDays.map((day) => {
+        return (
+          <CalendarCell
+            workouts={day.workouts}
+            key={day.dayOfTheMonth.toString()}
+            dayOfTheMonth={day.dayOfTheMonth}
+            dayOfTheWeek={day.dayOfTheWeek}
+          />
+        );
+      })}
+    </div>
+  );
 }
