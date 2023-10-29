@@ -6,10 +6,14 @@ interface CalendarGridProps {
 
 export default function CalendarGrid({ calendarDays }: CalendarGridProps) {
   return (
-    <div className="grid xl:grid-cols-8 sm:grid-cols-4 xs:grid-cols-4 grid-rows-2 gap-4 min-w-[640px]">
+    <div
+      data-test-id="calender-grid"
+      className="grid xl:grid-cols-8 sm:grid-cols-4 xs:grid-cols-4 grid-rows-2 gap-4 min-w-[640px]"
+    >
       {calendarDays.map((day) => {
         return (
           <CalendarCell
+            data-test-id="calendar-cell"
             workouts={day.workouts}
             key={day.dayOfTheMonth.toString()}
             dayOfTheMonth={day.dayOfTheMonth}
