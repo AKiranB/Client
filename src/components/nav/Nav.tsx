@@ -22,10 +22,7 @@ export default function Nav({
   handleLogin,
   handleLogout,
 }: NavProps) {
-  const items: items[] = [
-    { title: "Schedule Workout", route: "schedule" },
-    { title: "Calendar", route: "calendar" },
-  ];
+  const items: items[] = [{ title: "Calendar", route: "calendar" }];
   return (
     <nav className="flex justify-between text-white h-16 border-b border-gray-100 items-center bg-gray-900">
       <div className="flex items-center pl-8">

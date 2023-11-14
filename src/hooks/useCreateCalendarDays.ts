@@ -18,14 +18,14 @@ export default function useCreateCalendarDays(userId?: string) {
     "November",
     "December",
   ];
+
   const currentMonth = new Date().getUTCMonth() + 1;
   const calendarMonth = month[currentMonth - 1];
   const currentYear = new Date().getUTCFullYear();
-  const daysInMonth = getDaysInMonthUTC(currentMonth, currentYear);
   const calendarDays = createCalendarDays(
     currentMonth,
     currentYear,
     getDaysInMonthUTC
   );
-  return { calendarDays, calendarMonth };
+  return { calendarDays, calendarMonth, currentMonth };
 }
