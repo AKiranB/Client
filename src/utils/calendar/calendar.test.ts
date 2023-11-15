@@ -20,7 +20,6 @@ describe("Day Helper Functions", () => {
     it("should create an array of days for a given month and year", () => {
       const mockDaysInMonthFn = jest.fn(() => 30);
       const daysArray = createCalendarDays(4, 2021, mockDaysInMonthFn);
-
       expect(mockDaysInMonthFn).toHaveBeenCalledWith(4, 2021);
       expect(daysArray).toHaveLength(30);
       expect(daysArray[0]).toEqual(

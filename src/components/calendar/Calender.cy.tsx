@@ -1,25 +1,62 @@
 import Calendar from "./Calendar";
-import useCreateCalendarDays from "../../hooks/useCreateCalendarDays";
+import React from "react";
 
 describe("Calendar", () => {
-  const { calendarDays, calendarMonth } = useCreateCalendarDays();
-  const month = 10;
+  const mockArgs = {
+    calendarDays: [
+      { dayOfTheWeek: "Fri", dayOfTheMonth: "01" },
+      { dayOfTheWeek: "Sat", dayOfTheMonth: "02" },
+      { dayOfTheWeek: "Sun", dayOfTheMonth: "03" },
+      { dayOfTheWeek: "Mon", dayOfTheMonth: "04" },
+      { dayOfTheWeek: "Tue", dayOfTheMonth: "05" },
+      { dayOfTheWeek: "Wed", dayOfTheMonth: "06" },
+      { dayOfTheWeek: "Thu", dayOfTheMonth: "07" },
+      { dayOfTheWeek: "Fri", dayOfTheMonth: "08" },
+      { dayOfTheWeek: "Sat", dayOfTheMonth: "09" },
+      { dayOfTheWeek: "Sun", dayOfTheMonth: "10" },
+      { dayOfTheWeek: "Mon", dayOfTheMonth: "11" },
+      { dayOfTheWeek: "Tue", dayOfTheMonth: "12" },
+      { dayOfTheWeek: "Wed", dayOfTheMonth: "13" },
+      { dayOfTheWeek: "Thu", dayOfTheMonth: "14" },
+      { dayOfTheWeek: "Fri", dayOfTheMonth: "15" },
+      { dayOfTheWeek: "Sat", dayOfTheMonth: "16" },
+      { dayOfTheWeek: "Sun", dayOfTheMonth: "17" },
+      { dayOfTheWeek: "Mon", dayOfTheMonth: "18" },
+      { dayOfTheWeek: "Tue", dayOfTheMonth: "19" },
+      { dayOfTheWeek: "Wed", dayOfTheMonth: "20" },
+      { dayOfTheWeek: "Thu", dayOfTheMonth: "21" },
+      { dayOfTheWeek: "Fri", dayOfTheMonth: "22" },
+      { dayOfTheWeek: "Sat", dayOfTheMonth: "23" },
+      { dayOfTheWeek: "Sun", dayOfTheMonth: "24" },
+      { dayOfTheWeek: "Mon", dayOfTheMonth: "25" },
+      { dayOfTheWeek: "Tue", dayOfTheMonth: "26" },
+      { dayOfTheWeek: "Wed", dayOfTheMonth: "27" },
+      { dayOfTheWeek: "Thu", dayOfTheMonth: "28" },
+      { dayOfTheWeek: "Fri", dayOfTheMonth: "29" },
+      { dayOfTheWeek: "Sat", dayOfTheMonth: "30" },
+    ],
+    calendarMonth: "November",
+  };
 
   it("should render the calendar", () => {
     cy.mount(
       <Calendar
-        calendarDays={calendarDays}
-        calendarMonth={calendarMonth}
-        currentMonth={month}
+        onNextMonth={() => {}}
+        onPrevMonth={() => {}}
+        calendarDays={mockArgs.calendarDays}
+        calendarMonth={mockArgs.calendarMonth}
+        currentMonth={11}
       />
     );
   });
-  it("should render the CalendarGrid correctly with the correct number of days  ", () => {
+  it("should render the CalendarGrid correctly with the correct number of days", () => {
     cy.mount(
       <Calendar
-        calendarDays={calendarDays}
-        calendarMonth={calendarMonth}
-        currentMonth={month}
+        onNextMonth={() => {}}
+        onPrevMonth={() => {}}
+        calendarDays={mockArgs.calendarDays}
+        calendarMonth={mockArgs.calendarMonth}
+        currentMonth={11}
       />
     );
     it("should render the month title", () => {
@@ -28,6 +65,6 @@ describe("Calendar", () => {
     expect(cy.get('[data-test-id="calender-grid"]')).to.exist;
     cy.get('[data-test-id="calender-grid"]')
       .children()
-      .should("have.length", 31);
+      .should("have.length", 30);
   });
 });
