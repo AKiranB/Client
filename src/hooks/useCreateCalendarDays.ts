@@ -1,9 +1,12 @@
+"use client";
+import { useEffect, useState } from "react";
 import {
   createCalendarDays,
   getDaysInMonthUTC,
 } from "../utils/calendar/calendar";
+import { CalendarCellProps } from "../components/calendar/CalendarCell";
 
-export default function useCreateCalendarDays(userId?: string) {
+export default function useCreateCalendarDays() {
   const month = [
     "January",
     "February",
@@ -19,13 +22,26 @@ export default function useCreateCalendarDays(userId?: string) {
     "December",
   ];
 
-  const currentMonth = new Date().getUTCMonth() + 1;
-  const calendarMonth = month[currentMonth - 1];
+  const [currentMonth, setCurrentMonth] = useState(0);
+  const [calendarDays, setCalendarDays] = useState<CalendarCellProps[]>([]);
+
+  useEffect(() => {
+    setCurrentMonth(new Date().getUTCMonth() + 1);
+  }, []);
+
   const currentYear = new Date().getUTCFullYear();
-  const calendarDays = createCalendarDays(
-    currentMonth,
-    currentYear,
-    getDaysInMonthUTC
-  );
-  return { calendarDays, calendarMonth, currentMonth };
+
+  useEffect(() => {
+    const days = createCalendarDays(
+      currentMonth,
+      currentYear,
+      getDaysInMonthUTC
+    );
+
+    setCalendarDays(days);
+  }, [currentYear, currentMonth]);
+
+  const calendarMonth = month[currentMonth - 1];
+
+  return { calendarDays, calendarMonth, currentMonth, setCurrentMonth };
 }

@@ -15,8 +15,10 @@ export default function TitleLayout({ children, title }: Props) {
           </h1>
         </div>
       </header>
-      <main className="min-h-screen">
-        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">{children}</div>
+      <main className="">
+        <div className="mx-auto max-w-7xl py-12 sm:px-6 lg:px-8">
+          {children}
+        </div>
       </main>
     </Fragment>
   );

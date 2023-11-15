@@ -22,7 +22,7 @@ export default function IconButton({
   ...props
 }: IconButtonProps) {
   return (
-    <button onClick={onClick}>
+    <button onClick={onClick} {...props}>
       <Icon className="h-6 w-6" scale="2" />
     </button>
   );
