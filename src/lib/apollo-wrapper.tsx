@@ -9,7 +9,7 @@ import {
 
 function makeClient() {
   const httpLink = new HttpLink({
-    uri: "https://fitr-api.onrender.com/graphql",
+    uri: "http://localhost:80/graphql",
   });
   return new NextSSRApolloClient({
     cache: new NextSSRInMemoryCache(),

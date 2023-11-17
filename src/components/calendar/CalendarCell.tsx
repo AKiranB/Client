@@ -1,9 +1,16 @@
-import { Workout } from "../../types/graphql-request";
+import { Status, Workout } from "../../types/graphql-request";
 
 export interface CalendarCellProps {
   dayOfTheWeek: string;
   dayOfTheMonth: string;
-  workouts?: Workout[];
+  workouts?: CalenderWorkoutProps[];
+}
+
+export interface CalenderWorkoutProps {
+  _id: string;
+  duration: string;
+  variant: Status;
+  time: string;
 }
 
 export default function CalendarCell({
