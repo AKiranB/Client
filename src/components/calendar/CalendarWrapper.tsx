@@ -6,12 +6,26 @@ export default function CalendarWrapper() {
   const { calendarDays, calendarMonth, currentMonth, setCurrentMonth } =
     useCreateCalendarDays();
 
-  console.log(calendarDays);
+  const handleNextMonth = () => {
+    if (currentMonth === 12) {
+      setCurrentMonth(1);
+    } else {
+      setCurrentMonth((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevMonth = () => {
+    if (currentMonth === 1) {
+      setCurrentMonth(12);
+    } else {
+      setCurrentMonth((prev) => prev - 1);
+    }
+  };
   return (
     <Calendar
       data-test-id="calendar"
-      onNextMonth={() => setCurrentMonth((prev) => prev + 1)}
-      onPrevMonth={() => setCurrentMonth((prev) => prev - 1)}
+      onNextMonth={handleNextMonth}
+      onPrevMonth={handlePrevMonth}
       calendarDays={calendarDays}
       calendarMonth={calendarMonth}
       currentMonth={currentMonth}

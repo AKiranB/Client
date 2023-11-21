@@ -1,34 +1,24 @@
-//this is the badge that is displayed in teh Calendar cell when there is a workout present
-//IT should have some variants
-//IE if the workout is complete, it should be green
-//if the workout is incomplete, it should be red
-//if the workout is in progress, it should be yellow
+import { Status } from "../../types/graphql-request";
 
-interface WorkoutBadgeProps {
-  variant: "complete" | "missed" | "inProgress";
-  onClick: () => void;
+export interface CalendarBadgeProps {
+  _id?: string;
+  duration: number;
+  status: Status;
   time: string;
 }
 
-export default function WorkoutBadge({
-  variant,
-  onClick,
-  time,
-}: WorkoutBadgeProps) {
+export default function WorkoutBadge({ status, time }: CalendarBadgeProps) {
   return (
-    <div
-      className={`flex justify-center items-center rounded-full w-16 h-5 ${
-        variant === "complete"
-          ? "bg-green-300"
-          : variant === "missed"
-          ? "bg-red-500"
+    <span
+      className={`flex justify-center w-full text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700${
+        status === Status.Completed
+          ? "border border-green-400 bg-green-200"
+          : status === Status.Missed
+          ? "border border-red-400 bg-red-200"
           : "bg-yellow-500"
       }`}
-      onClick={onClick}
     >
-      <div>
-        <div className="text-white text-xs font-bold">{time}</div>
-      </div>
-    </div>
+      <div className="text-gray-600 text-xs font-bold">{time}</div>
+    </span>
   );
 }
