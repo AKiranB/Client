@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Calendar from "../../components/calendar/Calendar";
+import { Status } from "../../types/graphql-request";
 
 const meta = {
   title: "Example/Calendar",
@@ -19,7 +20,18 @@ export const Primary: Story = {
       { dayOfTheWeek: "Sun", dayOfTheMonth: "03" },
       { dayOfTheWeek: "Mon", dayOfTheMonth: "04" },
       { dayOfTheWeek: "Tue", dayOfTheMonth: "05" },
-      { dayOfTheWeek: "Wed", dayOfTheMonth: "06" },
+      {
+        dayOfTheWeek: "Wed",
+        dayOfTheMonth: "06",
+        workouts: [
+          {
+            _id: "1234565",
+            duration: 30,
+            time: "14:00",
+            status: Status.Missed,
+          },
+        ],
+      },
       { dayOfTheWeek: "Thu", dayOfTheMonth: "07" },
       { dayOfTheWeek: "Fri", dayOfTheMonth: "08" },
       { dayOfTheWeek: "Sat", dayOfTheMonth: "09" },
