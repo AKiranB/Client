@@ -302,6 +302,28 @@ export const LoginDocument = gql`
   }
 }
     `;
+export const FindAllWorkoutsDocument = gql`
+    query FindAllWorkouts($filter: GenericFilterInput) {
+  findAllWorkouts(filter: $filter) {
+    _id
+    createdBy
+    date
+    duration
+    plan {
+      _id
+      description
+      exercises {
+        sets
+        reps
+        exerciseID
+      }
+      name
+    }
+    status
+    time
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -315,6 +337,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     Login(variables: LoginMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<LoginMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<LoginMutation>(LoginDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Login', 'mutation');
+    },
+    FindAllWorkouts(variables?: FindAllWorkoutsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<FindAllWorkoutsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<FindAllWorkoutsQuery>(FindAllWorkoutsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'FindAllWorkouts', 'query');
     }
   };
 }
@@ -330,3 +355,10 @@ export type LoginMutationVariables = Exact<{
 
 
 export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'LoginResponse', authToken: string, user: { __typename?: 'User', _id: string, name: string, email: string, password: string } } };
+
+export type FindAllWorkoutsQueryVariables = Exact<{
+  filter?: InputMaybe<GenericFilterInput>;
+}>;
+
+
+export type FindAllWorkoutsQuery = { __typename?: 'Query', findAllWorkouts: Array<{ __typename?: 'Workout', _id: string, createdBy: string, date: string, duration: number, status: Status, time: string, plan: { __typename?: 'Plan', _id: string, description: string, name: string, exercises: Array<{ __typename?: 'PlannedExercises', sets: number, reps: number, exerciseID: string }> } }> };

@@ -1,0 +1,20 @@
+query FindAllWorkouts($filter: GenericFilterInput) {
+  findAllWorkouts(filter: $filter) {
+    _id
+    createdBy
+    date
+    duration
+    plan {
+      _id
+      description
+      exercises {
+        sets
+        reps
+        exerciseID
+      }
+      name
+    }
+    status
+    time
+  }
+}

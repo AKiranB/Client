@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Avatar from "../avatar/Avatar";
 import Button from "../button/Button";
+import Link from "next/link";
 
 interface NavProps {
   logo?: HTMLImageElement;
@@ -43,10 +44,10 @@ export default function Nav({
         <ul className="hidden md:flex text-gray-300 font-semi-bold font-heading space-x-16 mx-auto pl-16">
           {items?.map((item) => {
             return (
-              <li key={Math.random()}>
-                <a className="hover:text-gray-100" href={`/${item.route}`}>
-                  {item.title}
-                </a>
+              <li key={item.route}>
+                <Link href={`/${item.route}`}>
+                  <span className="hover:text-gray-100">{item.title}</span>
+                </Link>
               </li>
             );
           })}

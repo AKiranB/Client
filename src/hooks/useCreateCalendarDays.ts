@@ -5,6 +5,7 @@ import {
   getDaysInMonthUTC,
 } from "../utils/calendar/calendar";
 import { CalendarCellProps } from "../components/calendar/CalendarCell";
+import { useStore } from "../store";
 
 export default function useCreateCalendarDays() {
   const month = [
@@ -21,6 +22,9 @@ export default function useCreateCalendarDays() {
     "November",
     "December",
   ];
+
+  const user = useStore((state) => state);
+  console.log(user);
 
   const [currentMonth, setCurrentMonth] = useState(0);
   const [calendarDays, setCalendarDays] = useState<CalendarCellProps[]>([]);
