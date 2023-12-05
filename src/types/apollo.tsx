@@ -290,6 +290,13 @@ export type LoginMutationVariables = Exact<{
 
 export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'LoginResponse', authToken: string, user: { __typename?: 'User', _id: string, name: string, email: string, password: string } } };
 
+export type FindAllWorkoutsQueryVariables = Exact<{
+  filter?: InputMaybe<GenericFilterInput>;
+}>;
+
+
+export type FindAllWorkoutsQuery = { __typename?: 'Query', findAllWorkouts: Array<{ __typename?: 'Workout', _id: string, createdBy: string, date: string, duration: number, status: Status, time: string, plan: { __typename?: 'Plan', _id: string, description: string, name: string, exercises: Array<{ __typename?: 'PlannedExercises', sets: number, reps: number, exerciseID: string }> } }> };
+
 
 export const FindAllUsersDocument = gql`
     query FindAllUsers {
@@ -367,3 +374,53 @@ export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginM
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
 export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export const FindAllWorkoutsDocument = gql`
+    query FindAllWorkouts($filter: GenericFilterInput) {
+  findAllWorkouts(filter: $filter) {
+    _id
+    createdBy
+    date
+    duration
+    plan {
+      _id
+      description
+      exercises {
+        sets
+        reps
+        exerciseID
+      }
+      name
+    }
+    status
+    time
+  }
+}
+    `;
+
+/**
+ * __useFindAllWorkoutsQuery__
+ *
+ * To run a query within a React component, call `useFindAllWorkoutsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindAllWorkoutsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindAllWorkoutsQuery({
+ *   variables: {
+ *      filter: // value for 'filter'
+ *   },
+ * });
+ */
+export function useFindAllWorkoutsQuery(baseOptions?: Apollo.QueryHookOptions<FindAllWorkoutsQuery, FindAllWorkoutsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<FindAllWorkoutsQuery, FindAllWorkoutsQueryVariables>(FindAllWorkoutsDocument, options);
+      }
+export function useFindAllWorkoutsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindAllWorkoutsQuery, FindAllWorkoutsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<FindAllWorkoutsQuery, FindAllWorkoutsQueryVariables>(FindAllWorkoutsDocument, options);
+        }
+export type FindAllWorkoutsQueryHookResult = ReturnType<typeof useFindAllWorkoutsQuery>;
+export type FindAllWorkoutsLazyQueryHookResult = ReturnType<typeof useFindAllWorkoutsLazyQuery>;
+export type FindAllWorkoutsQueryResult = Apollo.QueryResult<FindAllWorkoutsQuery, FindAllWorkoutsQueryVariables>;
